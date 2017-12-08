@@ -30,8 +30,7 @@ export class UserComponent {
           console.log("deleted")
           console.log(res);
           this.showUsers();
-        }
-      );
+      });
     }
     createUser(name,password){
       console.log("usuaro"+name);
