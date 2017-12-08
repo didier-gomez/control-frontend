@@ -1,0 +1,14 @@
+<h3>Usuarios</h3>
+<button (click)="showUsers()">Get users!</button>
+<div>
+  <ul>
+    <li *ngFor="let user of users">
+      Usuario {{user.name}}
+      <button (click)="deleteUser(user.name)">X</button>
+      <br/>
+      Ultimo acceso:  {{user.last_access}}
+
+      <hr/>
+    </li>
+  </ul>
+</div>
