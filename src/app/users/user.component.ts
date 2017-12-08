@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from "./user.service";
+
 import * as _ from "lodash";
 @Component({
   selector: "users",
@@ -9,6 +10,8 @@ import * as _ from "lodash";
 export class UserComponent {
   users: User[];
   show:boolean;
+  name:string;
+  password:string;
   constructor(private userService: UserService) {
     this.users=[];
     this.show=true;
@@ -28,8 +31,19 @@ export class UserComponent {
           console.log(res);
           this.showUsers();
         }
-      });
+      );
     }
+    createUser(name,password){
+      console.log("usuaro"+name);
+      this.userService.createUser(name,password).subscribe((res)=>{
+        console.log("creado");
+        this.showUsers();
+      }
+    );
+  }
+
+
+
 }
 interface User {
   name: string;

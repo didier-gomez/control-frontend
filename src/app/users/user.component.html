@@ -2,13 +2,19 @@
 <button (click)="showUsers()">Get users!</button>
 <div>
   <ul>
+
     <li *ngFor="let user of users">
       Usuario {{user.name}}
       <button (click)="deleteUser(user.name)">X</button>
       <br/>
       Ultimo acceso:  {{user.last_access}}
-
       <hr/>
     </li>
   </ul>
 </div>
+<div>
+		<input type="text" name="name" [(ngModel)]="name"  placeholder="Nombre" />
+		<input type="text" password="password" [(ngModel)]="password"  placeholder="Contraseña"/>
+		<button (click)="createUser(name,password)">Add</button>		
+
+ </div>
