@@ -1,20 +1,20 @@
 <h3>Usuarios</h3>
-<button (click)="showUsers()">Get users!</button>
 <div>
   <ul>
 
     <li *ngFor="let user of users">
-      Usuario {{user.name}}
-      <button (click)="deleteUser(user.name)">X</button>
-      <br/>
-      Ultimo acceso:  {{user.last_access}}
+      <span class ="medium-text">Usuario {{user.name}}</span>
+        <button class="custom-button" (click)="deleteUser(user.name)" >
+          <div style="font-size:large; color:White">
+            <i class="fas fa-trash"></i>
+          </div>
+        </button>
+        <br/>
+        <span class ="medium-text">Ultimo acceso:  {{user.last_access}}</span>
       <hr/>
     </li>
   </ul>
 </div>
 <div>
-		<input type="text" name="name" [(ngModel)]="name"  placeholder="Nombre" />
-		<input type="text" password="password" [(ngModel)]="password"  placeholder="Contraseña"/>
-		<button (click)="createUser(name,password)">Add</button>		
-
+    <button (click)="createUser()">Add user</button>
  </div>

@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {UserService} from "./user.service";
-
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {CustomValidator} from "../shared/custom-validator";
+import { Router } from '@angular/router';
 import * as _ from "lodash";
 @Component({
   selector: "users",
   templateUrl: 'user.component.html',
-  providers: [UserService]
+  providers: [UserService, FormBuilder]
 })
-export class UserComponent {
+export class UserComponent implements OnInit{
   users: User[];
   show:boolean;
   name:string;
   password:string;
-  constructor(private userService: UserService) {
-    this.users=[];
-    this.show=true;
-
+  userForm: FormGroup;
+  constructor(private userService: UserService,  private _router: Router) {
+  }
+  ngOnInit(){
+    this.showUsers();
   }
   showUsers() {
     this.userService.getUsers().subscribe(users=> {
@@ -32,17 +35,15 @@ export class UserComponent {
           this.showUsers();
       });
     }
-    createUser(name,password){
-      console.log("usuaro"+name);
+    createUser(){
+       this._router.navigate(['users/add', {}]);
+/*      console.log("usuaro"+name);
       this.userService.createUser(name,password).subscribe((res)=>{
         console.log("creado");
         this.showUsers();
       }
-    );
+    );*/
   }
-
-
-
 }
 interface User {
   name: string;

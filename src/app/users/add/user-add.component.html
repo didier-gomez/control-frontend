@@ -1,0 +1,35 @@
+<div class="col-md-6">
+  <h3>Agregar usuario</h3>
+  <form (ngSubmit)="onSubmit()" #addForm="ngForm">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control"
+      required
+      pattern="[A-D][0-9]+"
+      [(ngModel)]="model.name"
+      name="name"
+      #name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        <div [hidden]="!name.hasError('required')">Campo requerido</div>
+        <div [hidden]="!name.hasError('pattern')">
+          <br/>Formato:
+          <br/>Mayúscula[A-D] Números[0-9]
+          <br/>Ejemplos: A0, B99, C01
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Contrase&ntilde;a (numérica)</label>
+      <input type="text" class="form-control"
+      [(ngModel)]="model.password"
+      required
+      pattern="[0-9]+"
+      #password="ngModel"
+      name="password">
+    </div>
+    <button type="submit" class="btn btn-success btn-block"
+    [disabled]="!addForm.form.valid">Agregar!</button>
+    <button (click)="goHome()">Cancelar</button>
+  </form>
+
+</div>
