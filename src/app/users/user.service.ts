@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http, Response,Headers,RequestOptions} from "@angular/http";
 import "rxjs/add/operator/map";
+import {ENV} from "../../env";
 
 @Injectable()
 export class UserService {
@@ -8,21 +9,17 @@ export class UserService {
 
   }
   getUsers() {
-    return this.http.get("http://192.168.1.66:3000/user")
+    return this.http.get(ENV.API + "/user")
     .map(res=>res.json());
   }
   deleteUser(name){
-    return this.http.delete("http://192.168.1.66:3000/user/" + name)
+    return this.http.delete(ENV.API +"/user/" + name)
     .map(res => res.json());
   }
-  createUser(name,password){
-  var dato = {
-  "name":name,
-  "password":password
-  };
-let headers = new Headers({ 'Content-Type': 'application/json' });
-let options = new RequestOptions ({ headers:headers });
-  return this.http.post("http://192.168.1.66:3000/user/",dato,options)
-  .map(res => res.json());
+  createUser(user){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions ({ headers:headers });
+    return this.http.post(ENV.API + "/user/", user, options)
+    .map(res => res.json());
   }
 }

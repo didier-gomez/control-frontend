@@ -3,12 +3,8 @@
   <ul>
 
     <li *ngFor="let user of users">
-      <span class ="medium-text">Usuario {{user.name}}</span>
-        <button class="custom-button" (click)="deleteUser(user.name)" >
-          <div style="font-size:large; color:White">
-            <i class="fas fa-trash"></i>
-          </div>
-        </button>
+        <span class ="medium-text">Usuario {{user.name}}</span>
+        <button class="custom-button" (click)="deleteUser(user.name)" > X </button>
         <br/>
         <span class ="medium-text">Ultimo acceso:  {{user.last_access}}</span>
       <hr/>

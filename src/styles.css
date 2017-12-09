@@ -1,4 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
 .custom-button {
   border-radius: 15%;
   background-color: #333

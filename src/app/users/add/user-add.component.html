@@ -1,31 +1,42 @@
-<div class="col-md-6">
+<div class="col-md-6 content">
   <h3>Agregar usuario</h3>
   <form (ngSubmit)="onSubmit()" #addForm="ngForm">
     <div class="form-group">
       <label for="name">Nombre</label>
+      <br/>
       <input type="text" class="form-control"
       required
       pattern="[A-D][0-9]+"
+      maxlength="6"
       [(ngModel)]="model.name"
       name="name"
       #name="ngModel">
+      <br/>Formato:
+      <br/>Mayúscula[A-D] Números[0-9]
+      <br/>Ejemplos: A0, B99, C01
+
       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
         <div [hidden]="!name.hasError('required')">Campo requerido</div>
-        <div [hidden]="!name.hasError('pattern')">
-          <br/>Formato:
-          <br/>Mayúscula[A-D] Números[0-9]
-          <br/>Ejemplos: A0, B99, C01
-        </div>
+        <div [hidden]="!name.hasError('pattern')">Formato incorrecto</div>
       </div>
     </div>
     <div class="form-group">
-      <label for="name">Contrase&ntilde;a (numérica)</label>
+      <label for="name">Contrase&ntilde;a</label>
+      <br/>
       <input type="text" class="form-control"
       [(ngModel)]="model.password"
       required
+      minlength="3"
+      maxlength="8"
       pattern="[0-9]+"
       #password="ngModel"
       name="password">
+      <br/> Formato: Numérica.Entre 3 y 8 dígitos
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        <div [hidden]="!password.hasError('required')">Campo requerido</div>
+        <div [hidden]="!password.hasError('pattern')">Sólo acepta números</div>
+        <div [hidden]="!password.hasError('minlength')">Contraseña demasiado corta</div>
+      </div>
     </div>
     <button type="submit" class="btn btn-success btn-block"
     [disabled]="!addForm.form.valid">Agregar!</button>

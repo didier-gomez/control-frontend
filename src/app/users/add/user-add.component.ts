@@ -8,6 +8,7 @@ import { Component, Directive, forwardRef, Attribute, OnChanges, SimpleChanges,
 @Component({
   selector: 'user-add',
   templateUrl: 'user-add.component.html',
+  styleUrls: ['./user-add.component.css'],
   providers: [UserService]
 })
 
@@ -18,8 +19,13 @@ export class UserAddComponent {
     this.model = new User();
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.model.name);
+    this.userService.createUser(this.model)
+    .subscribe((res) => {
+      this.goHome();
+    }
+  );
   }
   goHome(){
      this._router.navigate(['users', {}]);

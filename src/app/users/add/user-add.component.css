@@ -1,0 +1,39 @@
+form{
+    padding: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px #ccc;
+    background: #fff;
+    height: 100%;
+}
+.alert {
+      padding: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 0px 0px 10px #ccc;
+}
+.alert-danger {
+  background-color: #ffa5a5;
+  color: #b23939;
+}
+.form-group {
+  height: 8em;
+  font-size: large;
+  width: 50%;
+
+  padding: 20px;
+}
+.form-control {
+  border: 0;
+border-bottom: 2px solid #1976D2;
+width: 100%;
+font-size: 24px;
+line-height: 35px;
+height: 1em;
+text-align: center;
+padding: 10px;
+background: transparent;
+ color: #1976D2;
+}
+.content {
+  height: 50%;
+  background-color: #bbb;
+}
